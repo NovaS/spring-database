@@ -1,4 +1,4 @@
-spring-jdbctemplate
+spring-database
 ===================
 sample application using these technologies:
 
