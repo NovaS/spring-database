@@ -1,6 +1,7 @@
 package net.novasaputra.spring.jdbctemplate;
 
 import net.novasaputra.spring.jdbctemplate.service.UserService;
+import net.novasaputra.spring.jdbctemplate.service.UserServiceImpl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +17,7 @@ public class StartApp {
 	public StartApp() {
 		log.info("Starting App!");
 		ApplicationContext appCtx = new ClassPathXmlApplicationContext("context.xml");
-		UserService service = appCtx.getBean(UserService.class);
+		UserService service = (UserService) appCtx.getBean("userService");
 		log.info("===== PRINT ALL USER =====");
 		service.printAllUser();
 		log.info("===== INSERT USERS =====");
