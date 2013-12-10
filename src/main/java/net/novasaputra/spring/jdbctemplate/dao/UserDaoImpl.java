@@ -18,10 +18,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 /**
  * @author Nova Saputra
  */
 @Repository
+@Transactional(readOnly=true)
 public class UserDaoImpl implements UserDao {
 	private static final Logger log = LoggerFactory.getLogger(UserDaoImpl.class);
 	private static final String QRY_TABLE_CHECK = "select count(*) from information_schema.tables where table_name = 'TUSER'";
@@ -57,6 +59,7 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
+	@Transactional
 	public int save(User user) {
 		log.info("save: "+user.toString());
 		digest.update(user.getPassword().getBytes(), 0, user.getPassword().length());
@@ -71,6 +74,7 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
+	@Transactional
 	public int delete(User user) {
 		log.info("delete: "+user.toString());
 		return db.update(QRY_DELETE_USER, user.getId());

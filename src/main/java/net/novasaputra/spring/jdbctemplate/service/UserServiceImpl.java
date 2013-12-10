@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author NovaS
@@ -21,7 +20,6 @@ public class UserServiceImpl implements UserService {
 	private UserDao daoUser;
 	
 	@Override
-	@Transactional
 	public void fillUser(int count) {
 		for(int x=0;x<count;x++){
 			User user = new User();

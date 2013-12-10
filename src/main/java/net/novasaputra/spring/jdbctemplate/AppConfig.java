@@ -40,7 +40,7 @@ public class AppConfig {
 		return ds;
 	}
 
-	@Bean
+	@Bean(name="transactionManager")
 	public DataSourceTransactionManager getTransactionManager() {
 		return new DataSourceTransactionManager(getDataSource());
 	}
